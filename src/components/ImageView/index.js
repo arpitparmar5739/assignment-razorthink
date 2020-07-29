@@ -23,26 +23,39 @@ const ImageView = ({ imageSearchKeyword, imageId }) => {
       .downloadPhoto(image)
       .then(toJson)
       .then((response) => {
-        fetch(response.url).then((response) => {
-          console.log(response);
-          response.body
-            .getReader()
-            .read()
-            .then((response) => {
-              const url = window.URL.createObjectURL(
-                new Blob([response.value]),
-                {
-                  type: "image/jpeg",
+        fetch(response.url)
+          .then((response) => {
+            const reader = response.body.getReader();
+            return new ReadableStream({
+              start(controller) {
+                return pump();
+                function pump() {
+                  return reader.read().then(({ done, value }) => {
+                    // When no more data needs to be consumed, close the stream
+                    if (done) {
+                      controller.close();
+                      return;
+                    }
+                    // Enqueue the next data chunk into our target stream
+                    controller.enqueue(value);
+                    return pump();
+                  });
                 }
-              );
-              const link = document.createElement("a");
-              link.href = url;
-              link.download = "download.jpg";
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
+              },
             });
-        });
+          })
+          .then((stream) => new Response(stream))
+          .then((response) => response.blob())
+          .then((blob) => URL.createObjectURL(blob))
+          .then((url) => {
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "download.jpg";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          })
+          .catch((err) => console.error(err));
       });
   };
 
