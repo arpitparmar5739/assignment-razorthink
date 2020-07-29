@@ -9,10 +9,12 @@ function useGetPaginatedImagesByKeyword(
   pageSize = PAGINATION_PAGE_SIZE
 ) {
   const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     if (imageSearchKeyword) {
+      setIsLoading(true);
       UNSPLASH.search
         .photos(imageSearchKeyword, page, pageSize, { orientation: "portrait" })
         .then(toJson)
@@ -23,6 +25,9 @@ function useGetPaginatedImagesByKeyword(
             setImages(json.results);
             setTotalPages(json.total_pages);
           }
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
     // else {
@@ -36,7 +41,7 @@ function useGetPaginatedImagesByKeyword(
     // }
   }, [imageSearchKeyword, page, pageSize]);
 
-  return [images, totalPages];
+  return [images, totalPages, isLoading];
 }
 
 export default useGetPaginatedImagesByKeyword;

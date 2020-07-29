@@ -9,7 +9,7 @@ const ImageListContainer = ({ imageSearchKeyword }) => {
   const history = useHistory();
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [images, totalPages] = useGetPaginatedImagesByKeyword(
+  const [images, totalPages, isLoading] = useGetPaginatedImagesByKeyword(
     imageSearchKeyword,
     currentPage
   );
@@ -45,8 +45,9 @@ const ImageListContainer = ({ imageSearchKeyword }) => {
           <PrimaryButton
             className={styles.loadMoreButton}
             onClick={handleLoadMore}
+            disabled={isLoading}
           >
-            Load more
+            {isLoading ? "Loading..." : "Load more"}
           </PrimaryButton>
         </div>
       )}

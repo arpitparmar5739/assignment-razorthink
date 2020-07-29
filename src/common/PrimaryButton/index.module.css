@@ -10,3 +10,7 @@
   background: #00a39e;
   cursor: pointer;
 }
+
+.primaryButton:disabled {
+  cursor: not-allowed;
+}
