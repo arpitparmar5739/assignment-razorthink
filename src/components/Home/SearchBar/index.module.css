@@ -1,0 +1,30 @@
+.searchBarContainer {
+  text-align: left;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.searchButton {
+  width: 36px;
+  height: 36px;
+  margin-left: -18px;
+  border-radius: 100%;
+}
+
+.searchBarInputBox {
+  width: 60%;
+  padding: 10px;
+  border: 2px solid #dedede;
+  border-radius: 10px;
+  outline: none;
+  font-weight: 700;
+  color: #5c5c5c;
+}
+
+.searchBarInputBox:focus {
+  border: 2px solid #aeaeae;
+}
+
+.searchBarInputBox::placeholder {
+  color: #bebebe;
+}

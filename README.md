@@ -1,3 +1,29 @@
+# Project Setup
+
+## Installing Dependencies
+
+Install dependencies using:
+
+`yarn install`
+
+## Run Application
+
+Run the project after installing dependencies using:
+
+`yarn start`
+
+# Assignment Problem Statement
+
+An image search engine application that should be done using React, HTML, CSS, React-Router. Please don't use any frameworks like bootstrap. For fetching the images and their metadata, please make use of Unsplash API. Make sure you use the latest React features as possible, follow the component structure and it should have minimum re-renders possible.
+
+The application should have two routes.
+
+1. Home page - It will have a search bar and an image list. User should be able to search for images by entering a keyword in the search box and hit enter. From the image list, each image should be clickable. Show 9 images per page. Use pagination.
+
+2. Clicked Image View - Once clicked on an image from the image list, it should open up a popup with a large view of the image and a download button as in the design. The image should get downloaded on Download button click.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

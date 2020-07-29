@@ -1,0 +1,15 @@
+.imageListContainer {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: auto auto auto;
+}
+
+.loadMoreButtonContainer {
+  margin-top: 40px;
+}
+
+.loadMoreButton {
+  font-weight: bold;
+  border-radius: 50px;
+  width: 150px;
+}

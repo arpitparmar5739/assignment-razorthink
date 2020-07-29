@@ -1,0 +1,10 @@
+.modalImageContainer {
+  text-align: center;
+}
+
+.downloadButton {
+  font-weight: bold;
+  border-radius: 50px;
+  width: 150px;
+  margin-top: 20px;
+}
