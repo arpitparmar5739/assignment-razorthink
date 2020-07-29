@@ -1,5 +1,15 @@
 # Project Setup
 
+## 3-steps to setup project
+
+1. Create .env.local
+2. Installing Dependencies
+3. Run Application
+
+## Create .env.local
+
+Create .env.local file taking .env.example as example in the same directory. I have provided the secret unsplash API Access key in the email. Please use that key as the value for REACT_APP_APP_ACCESS_KEY.
+
 ## Installing Dependencies
 
 Install dependencies using:
